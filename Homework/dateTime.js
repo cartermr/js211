@@ -1,6 +1,6 @@
-// *******************************
-//          PART ONE
-// *******************************
+// **********************************************
+//          Date and Time Assignment
+// **********************************************
 
 // Funtion to display current day and time
 const displayDate = () => {
@@ -8,77 +8,86 @@ const displayDate = () => {
     return currentDate
 }
 
-console.log(displayDate())
+console.log("1. Function to display the Date and Time:", displayDate())
 
 // Function to convert a number to a string
-let numToConvert = 15
+let a = 15
 
-const convertNumString = (origNum) => {
-    let convertNum = origNum.toString()
-    return convertNum
+const numToString = (num) => {
+    let str = num.toString()
+    return str
 }
 
-let convertedNum = convertNumString(numToConvert)
+let b = numToString(a)
 
-console.log(convertedNum, " which is typeof: ", typeof convertedNum)
+console.log("2. Function convert number", a, "to string:", b)
+
 
 // Function convert string to number
-let strToConvert = "30"
+let c = "53"
 
-const convertStringNum = (origStr) => {
-    let convertStr = Number(origStr)
-    return convertStr
+const stringToNumber = (str) => {
+    let num = Number(str)
+    return num
 }
 
-let convertedString = convertStringNum(strToConvert)
+let d = stringToNumber(c)
 
-console.log(convertedString, " which is typeof: ", typeof convertedString)
+console.log("3. Function convert string", c, "to number:", c)
 
 // Function to the datatype of a variable
 let data = true
 
-const displayDatatype = (data) => {
+const returnDataType = (data) => {
     return typeof data
 }
 
-console.log(data, " is a: ", displayDatatype(data))
+let type = returnDataType(data)
+
+console.log("4. Funtion to return data type of variable,", data, ":", type)
 
 // Function to add two numbers together
 let num1 = 10
 let num2 = 30
 
-const addTwoNumbers = (num1, num2) => {
+const add = (num1, num2) => {
     return num1 + num2
 }
 
-console.log(addTwoNumbers(num1, num2))
+let num3 = add(num1, num2)
+
+console.log("5. Function to add two number:", num1, "+", num2, "=", num3)
 
 // Function that only runs when two things are true
 let bool1 = true
 let bool2 = true
 
-const runTwoTrue = (a, b) => {
+const twoTrue = (a, b) => {
     if (a == true && b == true) {
-        return "Both items were True!!"
+        console.log("6. Function only runs if two items are True!")
     }
 }
 
-console.log(runTwoTrue(bool1, bool2))
+twoTrue(bool1, bool2)
 
 // Funtion run is one of two are true
 bool1 = false
 
-const runOneTrue = (a, b) => {
+const oneTrue = (a, b) => {
     if (a == true || b == true) {
-        return "At least one item or both is True!!"
+        console.log("7. Function only runs if one item is True!")
     }
 }
 
-console.log(runOneTrue(bool1, bool2))
+oneTrue(bool1, bool2)
 
 // Function run with both items are false
 bool2 = false
 
-const runBothFalse = (a, b) => {
-    
+const allFalse = (a, b) => {
+    if (a == false && b == false) {
+        console.log("8. Function only runs it two items are False!")
+    }
 }
+
+allFalse(bool2, bool1)
