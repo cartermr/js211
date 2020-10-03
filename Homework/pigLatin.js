@@ -10,11 +10,59 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+const vowels = ['a', 'e', 'i', 'o', 'u']
 
 const pigLatin = (word) => {
+  // Set word to lowercase and trim
+  word = word.toLowerCase()
+  word = word.trim()
 
-  // Your code here
+  // Does the word start with a vowel
+  for (const vowel of vowels) {
+    if (word[0] == vowel) {
+      // If the word starts with a vowel send to translation
+      return startVowl(word)
+    }
+  }
 
+  // Send word for translation
+  return translateWord(word)
+}
+
+// Translation function for words that start with a vowel
+const startVowl = (word) => {
+  // Trasnlate the word into Pig Latin
+  return word + "yay"
+}
+
+// Translation function for words that start with a consonant
+const translateWord = (word) => {
+  let stop = false
+  let indexOf
+
+  // Loop through each letter in word
+  for (let i = 0; i < word.length; i++) {
+    // Check each letter to see if it's a vowel
+    for (const vowel of vowels) {
+      // If the letter is a vowel, return the index and break from the loop
+      if (word[i] == vowel) {
+        indexOf = i
+        stop = true
+        break
+      }
+    }
+    // Break from the full loop when the first vowel is found
+    if (stop == true) {
+      break
+    }
+  }
+
+  // Trasnlate the word into Pig Latin
+  let str1 = word.slice(0, indexOf)
+  let str2 = word.slice(indexOf,)
+  let newWord = str2 + str1 + "ay"
+
+  return newWord
 }
 
 // the first function called in the program to get an input from the user
@@ -55,11 +103,6 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
-
-
-
-
-
 
 // **********
 //   HINTS
