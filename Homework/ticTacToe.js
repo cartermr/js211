@@ -147,7 +147,7 @@ if (typeof describe === 'function') {
       assert.equal(diagonalWin(), true);
     });
     it('should detect a win', () => {
-      board = [ ['X', ' ', ' '], [' ', 'X', ' '], [' ', ' ', 'X'] ];
+      board = [ ['X', 'O', 'X'], [' ', 'X', ' '], [' ', ' ', 'X'] ];
       assert.equal(checkForWin(), true);
     });
   });
