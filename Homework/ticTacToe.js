@@ -83,20 +83,16 @@ const ticTacToe = (row, column) => {
   // PLace marker onto board
   board[row][column] = playerTurn
 
+  let win = checkForWin()
+
   // Check for a winner
-  if (checkForWin() == true) {
+  if (win) {
     // Create and display winner message
     let msg = "\n******************************\n" + "Congrats! Player " + playerTurn + " Won!" + "\n******************************\n"
     console.log(msg)
-    // Reset board for a new game
-    board = [
-      [' ', ' ', ' '],
-      [' ', ' ', ' '],
-      [' ', ' ', ' ']
-    ]
+  } else {
+    switchPLayers()
   }
-
-  switchPLayers()
 }
 
 const switchPLayers = () => {
@@ -146,10 +142,20 @@ if (typeof describe === 'function') {
       board = [ ['X', ' ', ' '], [' ', 'X', ' '], [' ', ' ', 'X'] ];
       assert.equal(diagonalWin(), true);
     });
+    
+    it('should detect a win', () => {
+      ticTacToe(0, 0)
+      ticTacToe(0, 1)
+      ticTacToe(1, 1)
+      ticTacToe(0, 2)
+      ticTacToe(2, 2)
+      assert.equal(checkForWin(), true);
+    });
+    /*
     it('should detect a win', () => {
       board = [ ['X', 'O', 'X'], [' ', 'X', ' '], [' ', ' ', 'X'] ];
       assert.equal(checkForWin(), true);
-    });
+    }); */
   });
 } else {
 
