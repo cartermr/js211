@@ -82,3 +82,21 @@ console.log('** Challenge #10');
 carsInReverse.push('Cadillac');
 carsInReverse.push('Chevy');
 console.log('"Cadillac and "Chevy" pushed onto end of carsInReverse ->', carsInReverse, '\n')
+
+/**
+ * 11. use pop() to removethe last item from carsInReverse
+ */
+console.log('** Challenge #11');
+console.log('the last item of carsInReverse ->', carsInReverse.pop(),'\n');
+
+/**
+ * 12. use shift() to remove the first item from carsInReverse
+ */
+console.log('** Challenge #12');
+console.log('the first item of carsInReverse ->', carsInReverse.shift(),'\n')
+
+/**
+ * 13. use unshift() to add a new type of car the carsInReverse
+ */
+console.log('** Challenge #113');
+console.log('new type of car, "BMW"')
