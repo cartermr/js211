@@ -93,11 +93,7 @@ const towersOfHanoi = (startStack, endStack) => {
     console.log('************************************');
     // Start new game and reset board
     console.log('\nNew Game\n');
-    stacks = {
-      a: [4, 3, 2, 1],
-      b: [],
-      c: []
-    };
+    stacks = { a: [4, 3, 2, 1], b: [], c: [] };
   };
 };
 
