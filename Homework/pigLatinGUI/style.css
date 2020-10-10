@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+main > span {
+    align-self: center;
+}
+
+main > p {
+    width: 400px;
+}
+
+footer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
