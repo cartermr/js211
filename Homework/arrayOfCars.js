@@ -93,10 +93,22 @@ console.log('the last item of carsInReverse ->', carsInReverse.pop(),'\n');
  * 12. use shift() to remove the first item from carsInReverse
  */
 console.log('** Challenge #12');
-console.log('the first item of carsInReverse ->', carsInReverse.shift(),'\n')
+console.log('the first item of carsInReverse ->', carsInReverse.shift(),'\n');
 
 /**
  * 13. use unshift() to add a new type of car the carsInReverse
  */
-console.log('** Challenge #113');
-console.log('new type of car, "BMW"')
+console.log('** Challenge #13');
+carsInReverse.unshift('BMW');
+console.log('new type of car, "BMW" ->', carsInReverse,'\n');
+
+/**
+ * 14. create array called numbers, use forEach() to add 2 to each number in array
+ */
+let numbers = [23, 45, 0, 2];
+console.log('** Challenge #14');
+console.log('numbers array ->', numbers);
+numbers.forEach( (num, i) => {
+    numbers[i] = numbers[i] + 2;
+});
+console.log('numbers array with 2 added to each element ->', numbers);
