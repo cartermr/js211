@@ -13,13 +13,30 @@ const firstVowel = (word) => {
 const translateConsonantWord = (word) => {
     let index = firstVowel(word);
     let newWord = '';
+    let noPunc = /\w/.test(word[word.length - 1]);
+    let str1 = '';
+    let str2 = '';
+    let str3 = '';
 
     if (index == -1) {
-        newWord = word + 'ay';
+        if (noPunc == true) {
+            newWord = word + 'ay';
+        } else {
+            str1 = word.slice(0, -1);
+            str2 = word.slice(-1);
+            newWord = str1 + 'ay' + str2;
+        };
     } else {
-        let str1 = word.slice(0, index);
-        let str2 = word.slice(index,);
-        newWord = str2 + str1 + 'ay';
+        if (noPunc == true) {
+            str1 = word.slice(0, index);
+            str2 = word.slice(index,);
+            newWord = str2 + str1 + 'ay';
+        } else {
+            str1 = word.slice(0, index);
+            str2 = word.slice(index,-1);
+            str3 = word.slice(-1);
+            newWord = str2 + str1 + 'ay' + str3;
+        }
     };
     return newWord;
 };
@@ -33,7 +50,16 @@ const checkStartVowel = (word) => {
 };
 
 const translateVowelWord = (word) => {
-    return word + 'yay';
+    let newWord = '';
+    let noPunc = /\w/.test(word[word.length - 1]);
+    if (noPunc == true) {
+        newWord = word + 'yay';
+    } else {
+        let str1 = word.slice(0, -1);
+        let str2 = word.slice(-1);
+        newWord = str1 + 'yay' + str2;
+    };
+    return newWord;
 };
 
 const processTextTranslation = (text) => {
@@ -76,3 +102,9 @@ const translateText = () => {
 let translateButton = document.getElementById('translate');
 
 translateButton.addEventListener('click', translateText);
+
+const reset = () => {
+    document.getElementById('originalText').value = '';
+    document.getElementById('translatedText').innerText = 'Translated Text'
+}
+
