@@ -57,3 +57,19 @@ let jetPilots = pilots.filter(function(element, index){
     return element.type == 'Jet';
 });
 console.log('The Jet pilots are', jetPilots);
+
+console.log();
+
+let describe = (pilot) => {
+    let civilianType;
+    if (pilot.civilian == true){
+        civilianType = 'civilian'
+    }
+    if (pilot.civilian == false){
+        civilianType = 'non-civilian'
+    }
+    let msg = `${pilot.name} is a ${civilianType} and flys a ${pilot.type}`
+    return msg
+}
+
+pilots.map(describe).forEach((element) => console.log(element))
