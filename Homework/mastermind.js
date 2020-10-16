@@ -12,15 +12,15 @@ let solution = '';
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
 const printBoard = () =>  {
-  for (let i = 0; i < board.length; i++) {
-    console.log(board[i]);
-  }
+  console.log();
+  console.log('Your Moves:', board);
+  console.log();
 }
 
 const generateSolution = () =>  {
   for (let i = 0; i < 4; i++) {
     const randomIndex = getRandomInt(0, letters.length);
-    solution += letters[randomIndex];
+    solution = solution + letters[randomIndex];
   }
 }
 
@@ -28,13 +28,35 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const generateHint = () =>  {
-  // your code here
+const generateHint = (guess) =>  {
+
+  let correctPosition = 0
+  let correctLetters = 0
+
+  for (let i = 0; i < 4; i++) {
+    if (guess[i] == solution[i]) {
+      correctPosition = correctPosition + 1
+    }
+  }
+
+  
+}
+
+const checkWin = (guess) => {
+  if (guess == solution) {
+    return true
+  } else {
+    return false
+  }
 }
 
 const mastermind = (guess) => {
   solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+
+  board.push(guess)
+  if (checkWin(guess)) {
+    return 'You guessed it!'
+  }
 }
 
 
