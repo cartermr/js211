@@ -45,7 +45,7 @@ console.log()
 let arrayOfPersons = [
     {firstName: 'Jane',
     lastName: 'Doe',
-    birthDate: 'Jan 5, 1995',
+    birthDate: 'Dec 5, 1999',
     gender: 'female'},
     {firstName: 'John',
     lastName: 'Doe',
@@ -94,10 +94,36 @@ console.log(filtered)
 console.log()
 
 // 9. function to return true if birthDate is before jan 1, 1990
-let birth = person.birthDate.split(/\s|\W\s/)
-
-const bornBefore = () => {
-    
+const bornBefore = (dob) => {
+    let cutOffDate = Date.parse('Jan 1, 1990')
+    if (Date.parse(dob) < cutOffDate) {
+        return true
+    } else {
+        return false
+    }
 }
 
-console.log(birth)
+// 10. filter out people born before Jan 1, 1990
+console.log('9 / 10. Create a function to return true if born before Jan 1, 1990,')
+console.log('then use filter() on arrayOfPersons to log out those born before Jan 1, 1990')
+console.log('----------------------------------------------------------------------------')
+let bornEarly = arrayOfPersons.filter(people => bornBefore(people.birthDate))
+console.log(bornEarly)
+console.log()
+
+// Bonus
+const twentyOneYearsAgo = (dob) => {
+    let twentyOneYears = new Date()
+    twentyOneYears.setFullYear(twentyOneYears.getFullYear() - 21)
+    if (Date.parse(dob) >= Date.parse(twentyOneYears)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+console.log('Bonus Create a function to return true if born on or before 21 years ago,')
+console.log('then use filter() on arrayOfPersons to log out those younger than 21')
+console.log('-------------------------------------------------------------------------')
+let underTwentyOne = arrayOfPersons.filter(people => twentyOneYearsAgo(people.birthDate))
+console.log(underTwentyOne)
