@@ -45,7 +45,7 @@ console.log()
 let arrayOfPersons = [
     {firstName: 'Jane',
     lastName: 'Doe',
-    birthDate: 'Jan 5, 1925',
+    birthDate: 'Jan 5, 1995',
     gender: 'female'},
     {firstName: 'John',
     lastName: 'Doe',
@@ -57,7 +57,7 @@ let arrayOfPersons = [
     gender: 'male'},
     {firstName: 'Julie',
     lastName: 'Jones',
-    birthDate: 'Jul 5, 1980',
+    birthDate: 'Jul 5, 1998',
     gender: 'female'}
 ]
 console.log('5. Create array of objects')
@@ -92,3 +92,12 @@ console.log('-----------------------------------------------------------')
 let filtered = arrayOfPersons.filter(people => people.gender == 'male')
 console.log(filtered)
 console.log()
+
+// 9. function to return true if birthDate is before jan 1, 1990
+let birth = person.birthDate.split(/\s|\W\s/)
+
+const bornBefore = () => {
+    
+}
+
+console.log(birth)
