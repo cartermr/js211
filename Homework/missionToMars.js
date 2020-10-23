@@ -9,12 +9,54 @@ const jobTypes = {
   programmer: 'Any Ship!'
 };
 
-// Your code will go here
+// Class to represent a crewmember
+class CrewMember {
+  // Class variables
+  name;
+  job;
+  specialSkill;
+  ship;
 
+  // initialize variables when class is created
+  constructor (name, job, specialSkill) {
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = null;
+  }
 
+  // method to have crewmember enter a ship, adds the ship type to crewmember class, then increases the crew size of the ship class passed in
+  enterShip(ship) {
+    this.ship = ship;
+    ship.crew.push(this);
+  }
+}
 
+// Class to represent a ship
+class Ship {
+  // Class variables
+  name;
+  type;
+  ability;
+  crew;
 
+  // Initialize the variables when class is created
+  constructor (name, type, ability) {
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = [];
+  }
 
+  // print out the mission statement of the ship, states not redy to go when there is no crew
+  missionStatement () {
+    if (this.crew.length == 0) {
+      return "Can't perform a mission yet.";
+    } else {
+      return this.ability;
+    }
+  }
+}
 
 
 // Begin by reading the tests and building a function that will full each one.
