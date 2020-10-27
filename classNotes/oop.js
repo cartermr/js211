@@ -35,6 +35,10 @@ class Car {
         this.odometer = 0
     }
 
+    actualMpg() {
+        return this.mpg
+    }
+
     addFuel(gallons) {
         let emptySpace = this.tankSize - this.currentFuel
 
@@ -50,7 +54,7 @@ class Car {
     }
 
     distanceToEmpty() {
-        return this.mpg * this.currentFuel
+        return this.actualMpg() * this.currentFuel
     }
 
     drive(miles) {
@@ -66,13 +70,44 @@ class Car {
 
         if(miles > maxDistance) {
             this.odometer = this.odometer + maxDistance
-            this.currentFuel = this.currentFuel - (maxDistance / this.mpg)
+            this.currentFuel = this.currentFuel - (maxDistance / this.actualMpg())
         } else {
             this.odometer = this.odometer + miles
-            this.currentFuel = this.currentFuel - (miles / this.mpg)
+            this.currentFuel = this.currentFuel - (miles / this.actualMpg())
         }
     }
 }
+
+class Truck extends Car {
+    constructor(inputId, inputMpg, inputBedSize) {
+        super(inputId, inputMpg, 30)
+        this.bedSize = inputBedSize
+        this.loaded = false
+    }
+
+    load() {
+        this.loaded = true
+    }
+
+    unload() {
+        this.loaded = false
+    }
+
+    actualMpg() {
+        if (this.loaded == true) {
+            return this.mpg * .85
+        } else {
+            return this.mpg
+        }
+    }
+}
+
+let t = new Truck('1234', 20, 40, 8)
+t.addFuel(10)
+t.load()
+t.drive(50)
+console.log('After 50 miles you can go', t.distanceToEmpty(), 'more miles')
+console.log('The truck has a bed size of', t.bedSize)
 
 if (typeof describe == 'function') {
     describe('constructor test', function(){
@@ -120,21 +155,21 @@ if (typeof describe == 'function') {
         })
     })
     describe('distance to empty', function(){
-        it('When the car has some gass', function(){
+        it('When the car has some gas', function(){
             let mazda = new Car('1234', 31, 13)
             mazda.addFuel(1)
             assert.ok(mazda.distanceToEmpty() == 31)
         })
-        it('When the car is empty of gass', function(){
+        it('When the car is empty of gas', function(){
             let mazda = new Car('1234', 31, 13)
             assert.ok(mazda.distanceToEmpty() == 0)
         })
-        it('When the car is full of gass', function(){
+        it('When the car is full of gas', function(){
             let mazda = new Car('1234', 31, 13)
             mazda.addFuel(13)
             assert.ok(mazda.distanceToEmpty() == (13*31))
         })
-        it('When the car has fractional gallons of gass', function(){
+        it('When the car has fractional gallons of gas', function(){
             let mazda = new Car('1234', 31, 13)
             mazda.addFuel(1.5)
             assert.ok(mazda.distanceToEmpty() == 46.5)
@@ -161,6 +196,100 @@ if (typeof describe == 'function') {
         })
         it('Normal driving', function(){
             let mazda = new Car('1234', 31, 13)
+            mazda.addFuel(10)
+            mazda.drive(31)
+            mazda.drive(62)
+            mazda.drive(15.5)
+            assert.ok(mazda.odometer == 108.5)
+            assert.ok(mazda.currentFuel == 6.5)
+        })
+    })
+    describe('constructor test', function(){
+        it('Should handle simple constructor', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            assert.ok(mazda.id == '1234')
+            assert.ok(mazda.mpg == 31)
+            assert.ok(mazda.tankSize == 13)
+            assert.ok(mazda.currentFuel == 0)
+            assert.ok(mazda.odometer == 0)
+        })
+    })
+    describe('addFuel() test', function(){
+        it('should add fuel to currentFuel', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(1)
+            assert.ok(mazda.currentFuel == 1)
+            mazda.addFuel(4)
+            assert.ok(mazda.currentFuel == 5)
+        })
+        it('allow incrimental fuel to capacity', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(5)
+            mazda.addFuel(5)
+            mazda.addFuel(1.5)
+            mazda.addFuel(1.5)
+            assert.ok(mazda.currentFuel == 13)
+        })
+        it('should not overfill', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(15)
+            assert.ok(mazda.currentFuel == 13)
+        })
+        it('should not overfill 2', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(10)
+            mazda.addFuel(4)
+            assert.ok(mazda.currentFuel == 13)
+        })
+        it('should not allow negative fuel', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(10)
+            mazda.addFuel(-3)
+            assert.ok(mazda.currentFuel == 10)
+        })
+    })
+    describe('distance to empty', function(){
+        it('When the Truck has some gass', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(1)
+            assert.ok(mazda.distanceToEmpty() == 31)
+        })
+        it('When the Truck is empty of ga, 8ss', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            assert.ok(mazda.distanceToEmpty() == 0)
+        })
+        it('When the Truck is full of gas, 8s', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(13)
+            assert.ok(mazda.distanceToEmpty() == (13*31))
+        })
+        it('When the Truck has fractional, 8 gallons of gass', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(1.5)
+            assert.ok(mazda.distanceToEmpty() == 46.5)
+        })
+    })
+    describe('Driving the Truck', function(){
+        it('No negative distance', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(10)
+            mazda.drive(-1)
+            assert.ok(mazda.odometer == 0)
+        })
+        it('Not be able to drive with no gas', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.drive(13)
+            assert.ok(mazda.odometer == 0)
+        })
+        it('Not be able to drive on fumes', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
+            mazda.addFuel(10)
+            mazda.drive(1000)
+            assert.ok(mazda.odometer == 310)
+            assert.ok(mazda.currentFuel == 0)
+        })
+        it('Normal driving', function(){
+            let mazda = new Truck('1234', 31, 13, 8)
             mazda.addFuel(10)
             mazda.drive(31)
             mazda.drive(62)
