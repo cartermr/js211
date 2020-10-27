@@ -57,3 +57,19 @@ console.log(bubSort)
 
 // insertion sort
 let insertSort = numArray.slice()
+
+const insertionSort = (array) => {
+    for(let i = 1; i < array.length; i++) {
+        let key = array[i]
+        let j = i - 1
+        while(j >= 0 && array[j] > key) {
+            array[j + 1] = array[j]
+            j = j - 1
+        }
+        array[j + 1] = key
+    }
+}
+
+insertionSort(insertSort)
+console.log('Sorted with Insertion Sort')
+console.log(insertSort)
