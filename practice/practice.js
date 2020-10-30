@@ -1,6 +1,8 @@
-let letters = 'abcd'
+let a = 'a'
+let b = 'A'
 
-let lettersArray = letters.split('')
+let x = a.charCodeAt(0)
+let y = b.charCodeAt(0)
 
-console.log(letters)
-console.log(lettersArray)
+console.log(x)
+console.log(y)
