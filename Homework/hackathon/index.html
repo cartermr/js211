@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="textEntry">
+        <textarea id="textInput" id="" cols="75" rows="30"></textarea>
+        <br>
+        <button id="process">Process Text</button>
+    </div>
+    <div class="right">
+        <h1>Text Statistics</h1>
+        <div class="textStatsRight">
+            <ul>
+                <li id="totalWords"># of words:</li>
+                <li>
+                    word usage count:
+                    <ul id="wordUsage">
+                        
+                    </ul>
+                </li>
+            </ul>
+            <ul class="letter">
+                <li id="totalLetters"># if letters:</li>
+                <li>
+                    letter usage count:
+                    <ul id="letterUsage">
+                        
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

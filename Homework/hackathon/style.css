@@ -1,0 +1,29 @@
+body {
+    height: 800px;
+    display: flex;
+}
+
+.textEntry {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.textEntry > button {
+    width: 25%;
+    height: 5%;
+    align-self: center;
+}
+
+.right {
+    margin-left: 5%;
+    width: 600px;
+}
+
+.textStatsRight {
+    display: flex;
+}
+
+.letter {
+    margin-left: 7%;
+}
