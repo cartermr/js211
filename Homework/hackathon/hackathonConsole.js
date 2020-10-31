@@ -48,10 +48,9 @@ const countLetters = (array) => {
 // function to count the number of times each word appears in the text
 const sameWords = (array) => {
     let words = {}
-    // loop through array once for each word
+    // loop through array once for each word, create an object with each word and its count
     for (let i = 0; i < array.length; i++) {
         let count = 0
-        //let test = array[i]
         array.forEach( (element) => {
             if (element == array[i]) {
                 count = count + 1
@@ -62,6 +61,8 @@ const sameWords = (array) => {
     return words
 }
 
+// main function to run the code, take in the text by the user, process the text
+// extracte the text stats, then display the text stats
 const run = (inputString) => {
     processedText = processText(inputString)
     textStats.letterCounts = processedText.lettersArray.length
