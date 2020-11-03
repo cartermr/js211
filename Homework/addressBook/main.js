@@ -8,8 +8,6 @@ const getUser = () => {
         })
 }
 
-getUser()
-
 const generateContactCard = (user) => {
     return `
     <section class="contactCard">
@@ -21,3 +19,5 @@ const generateContactCard = (user) => {
         </article>
     </section>`   
 }
+
+getUser()
