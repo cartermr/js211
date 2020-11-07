@@ -78,7 +78,7 @@ const checkWin = (guess) => {
 
 // Main game logic, controls flow of game outside of player input
 const mastermind = (guess) => {
-  solution = 'abcd'; // Comment this out to generate a random solution
+  // solution = 'abcd'; // Comment this out to generate a random solution
 
   // If the player had 10 incorrect guesses, return message that out of turns and the solution
   if (board.length == 10) {
