@@ -19,7 +19,7 @@ function binarySearch(haystack, needle) {
     let max = haystack.length - 1
 
     while (min <= max) {
-
+        
         let mid = parseInt((min + max) / 2)
         let element = haystack[mid]
 
