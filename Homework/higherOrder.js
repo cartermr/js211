@@ -43,9 +43,8 @@ const reduceFromScratch = (array, func) => {
     let accumulator = 0
     for (let i = 0; i < array.length; i++) {
         let currentValue = array[i]
-        let currentIndex = i
 
-        accumulator = func(accumulator, currentValue, currentIndex, array)
+        accumulator = func(accumulator, currentValue)
     }
     return accumulator
 }
