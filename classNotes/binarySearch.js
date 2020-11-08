@@ -31,7 +31,6 @@ function binarySearch(haystack, needle) {
             return mid
         }                
     }
-
     return -1
 }
 
