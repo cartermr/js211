@@ -7,24 +7,22 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Let's Play War!</h1>
     <main>
         <section class='player' id="player1">
             <section id="player1Image"></section>
-            <section class='cards'>
-                <h1 id='player1CardPlayed'>Card Played</h1>
-                <br>
-                <h1 id='player1FaceDown'>Card Face Down</h1>
+            <section class='cards' id='player1Card'>
+                
             </section>
         </section>
         <section class='player' id='player2'>
-            <section class="cards">
-                <h1 id='player2CardPlayed'>Card Played</h1>
-                <br>
-                <h1 id='player2FaceDown'>Card Face Down</h1>
+            <section class="cards" id="player2Card">
+                
             </section>
             <section id="player2Image"></section>
         </section>
     </main>
+    <h1 id="winner"></h1>
     <button onclick="playHand()">Play a Hand</button>
 </body>
 <script src="./main.js"></script>

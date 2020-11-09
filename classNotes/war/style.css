@@ -4,8 +4,13 @@
 }
 
 body {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
+}
+
+body > h1 {
+    align-self: center;
 }
 
 main {
@@ -29,4 +34,9 @@ button {
     width: 100px;
     height: 50px;
     align-self: center;
+}
+
+.cardImg {
+    height: 75%;
+    width: 75%;
 }

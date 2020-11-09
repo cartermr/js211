@@ -25,20 +25,56 @@ const dealCards = () => {
         .then(deck => {
             player1 = deck.slice(0, 26)
             player2 = deck.slice(26, deck.length)
-            window.alert('The deck has been delt, you are ready to play!')
+            // window.alert('The deck has been delt, you are ready to play!')
         })
 }
 
 const playHand = () => {
-    let battleField = [player1[0], player2[0]]
+    let player1Card = document.getElementById('player1Card')
+    let player2Card = document.getElementById('player2Card')
+
+    if (player1Card.hasChildNodes() && player2Card.hasChildNodes()) {
+        player1Card.removeChild(player1Card.firstChild)
+        player2Card.removeChild(player2Card.firstChild)
+        document.getElementById('winner').innerText = ''
+    }
+    
+    let battleField = [player1.shift(), player2.shift()]
+
+    console.log(battleField)
 
     let card1img = document.createElement('img')
+    card1img.className = 'cardImg'
     card1img.src = battleField[0].image
     let card2img = document.createElement('img')
+    card2img.className = 'cardImg'
     card2img.src = battleField[1].image
+    player1Card.appendChild(card1img)
+    player2Card.appendChild(card2img)
 
-    document.getElementById('player1CardPlayed').appendChild(card1img)
-    document.getElementById('player2CardPlayed').appendChild(card2img)
+    if (battleField[0].value == battleField[1].value) {
+        document.getElementById('winner').innerText = "Draw!"
+    } else if (Number(battleField[0].value) && Number(battleField[1].value)) {
+        if (Number(battleField[0].value) > Number(battleField[1].value)) {
+            document.getElementById('winner').innerText = "Player 1 won this hand!"
+            player1.push(battleField[1])
+        } else {
+            document.getElementById('winner').innerText = "Player 2 won this hand!"
+            player2.push(battleField[0])
+        }
+    } else if (!Number(battleField[0].value) && Number(battleField[1].value)) {
+        document.getElementById('winner').innerText = "Player 1 won this hand!"
+        player1.push(battleField[1])
+    } else if (Number(battleField[0].value) && !Number(battleField[1].value)) {
+        document.getElementById('winner').innerText = "Player 2 won this hand!"
+        player2.push(battleField[0])
+    }
+
+    if (player1.length == 50) {
+        window.alert("Player 1 Won!!")
+    } else if (player2.length == 50) {
+        window.alert("Player 2 Won!!")
+    }
 }
 
 playerPics()
