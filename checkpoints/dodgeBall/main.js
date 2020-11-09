@@ -1,3 +1,27 @@
+/**
+ *    CODE PLAN
+ * 
+ * - Create three classes, one to represent a player, one for each team available.
+ * 
+ * - A function to list the people who signed up, wanting to play dodgeball.
+ * 
+ * - A function that transfer a person to player status, create a new player object, add the person
+ * into the player object, then add that new player to an array of players. Have a button in place to
+ * trasnfer that new player to a team.
+ * 
+ * - A function that will transfer a player to either the red or blue teams
+ * 
+ * 
+ *    TESTING
+ * 
+ * - I would test that a new player object was created, from one of the people in the arrOfPeople[]
+ * - I would test that the new player was added to the listOfPlayers[]
+ * - I would then test that a new team member was created for both the red and blue teams, then test
+ * that the new team members was added to the appropriate color team array.
+ */
+
+
+
 const arrOfPeople = [
     {
       id: 2,
@@ -47,8 +71,7 @@ const arrOfPeople = [
       age: 32,
       skillSet: "jump rope",
       placeBorn: "New Orleans, Louisiana"
-    },
-  ]
+    },]
   
   const listOfPlayers = []
   const blueTeam = []
@@ -58,10 +81,10 @@ const arrOfPeople = [
     constructor(id, name, age){
       this.id = id
       this.name = name
-      this.canThrowBall = 'yes'
-      this.canDodgeBall = 'yes'
-      this.hasPaid = 'yes'
-      this.isHealthy = 'yes'
+      this.canThrowBall = true
+      this.canDodgeBall = true
+      this.hasPaid = true
+      this.isHealthy = true
       this.yearsExperience = age - 5
     }
   }
