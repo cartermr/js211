@@ -89,21 +89,11 @@ const arrOfPeople = [
     }
   }
 
-  class BlueTeammate extends Player {
-    constructor(id, name, experience){
+  class Teammate extends Player {
+    constructor(id, name, experience, teamColor){
       super(id, name)
       super.yearsExperience = experience
-      this.mascot = 'bull'
-      this.teamColor = 'blue'
-    }
-  }
-
-  class RedTeammate extends Player {
-    constructor(id, name, experience){
-      super(id, name)
-      super.yearsExperience = experience
-      this.mascot = 'eagle'
-      this.teamColor = 'red'
+      this.teamColor = teamColor
     }
   }
   
@@ -171,13 +161,13 @@ const arrOfPeople = [
     // determine if the red or blue team button was selected
     if (color == 'red') {
       // create a new team mate object, based on color selected and player
-      newTeammate = new RedTeammate(player.id, player.name, player.yearsExperience)
+      newTeammate = new Teammate(player.id, player.name, player.yearsExperience, color)
       // add the new team mate to the list of players on a team
       redTeam.push(newTeammate)
       // grabe the ul list area for the selected color team
       team = document.getElementById('red')
     } else {
-      newTeammate = new BlueTeammate(player.id, player.name, player.yearsExperience)
+      newTeammate = new Teammate(player.id, player.name, player.yearsExperience, color)
       blueTeam.push(newTeammate)
       team = document.getElementById('blue')
     }
